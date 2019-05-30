@@ -70,6 +70,11 @@ For example we are creating a user account with read write access on mydb databa
 switched to db mydb
 */
 
+> db.createCollection("test")
+/*
+{ "ok" : 1 }
+*/
+
 > db.createUser(
 ...     {
 ...       user: "chatbox",
@@ -119,9 +124,9 @@ bye
 #security:
 security.authorization: enabled
 */
-[root@localhost ~]# systemctl enable mongod
 [root@localhost ~]# systemctl start mongod
 [root@localhost ~]# systemctl status mongod
+sudo service mongodb restart
 /*
 ? mongod.service - MongoDB Database Server
    Loaded: loaded (/usr/lib/systemd/system/mongod.service; enabled; vendor preset: disabled)
@@ -144,8 +149,12 @@ May 09 22:46:23 localhost.localdomain systemd[1]: Started MongoDB Database Serve
 --or
 [root@localhost ~]#mongo --host 127.0.0.1 --port 27017 -u admin -p Admin@P@55w0rd --authenticationDatabase admin
 [root@localhost ~]#mongo --host 127.0.0.1 --port 27017 -u chatbox -p Ch@tB0x@P@55w0rd --authenticationDatabase chatbox
+
 --Backup
-[root@localhost ~]# mongodump --host 127.0.0.1 --port 27017 -u admin -p Admin@P@55w0rd --authenticationDatabase admin --out /home/BackUpMongoDB/
-
-
-
+[root@localhost ~]# mkdir -p /home/BackUpMongoDB/MongoFullBackup/dump/
+[root@localhost ~]# mongodump --host 127.0.0.1 --port 27017 -u admin -p Admin@P@55w0rd --authenticationDatabase admin --out /home/BackUpMongoDB/MongoFullBackup/dump/
+--Restore
+--FullBackupRestore
+[root@localhost ~]#mongorestore --host 127.0.0.1:27017 -u admin -p Admin@P@55w0rd --authenticationDatabase admin /home/BackUpMongoDB/MongoFullBackup/dump/
+--ParticularBackupRestore
+[root@localhost ~]#mongorestore --host 127.0.0.1:27017 -u admin -p Admin@P@55w0rd --authenticationDatabase admin -d chatbox /home/BackUpMongoDB/MongoFullBackup/dump/chatbox
