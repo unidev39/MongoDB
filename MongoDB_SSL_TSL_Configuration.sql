@@ -1,3 +1,14 @@
+OS Level add your VM IP with certification name
+C:\Windows\System32\drivers\etc\hosts
+/*
+192.168.159.130 localhost_ssl 
+*/
+
+[root@localhost ~]# vi /etc/hosts
+/*
+192.168.159.130 localhost_ssl
+*/
+
 [root@localhost /]# mkdir -p /etc/ssl/mongossl
 [root@localhost /]# cd /etc/ssl/mongossl
 [root@localhost mongossl]# ls
@@ -23,11 +34,11 @@ writing RSA key
 /*
 server.key
 */
-[root@localhost mongossl]# openssl req -sha256 -new -key server.key -out server.csr -subj "/CN=localhost"
+[root@localhost mongossl]# openssl req -sha256 -new -key server.key -out server.csr -subj "/CN=localhost_ssl"
 [root@localhost mongossl]# openssl x509 -req -sha256 -days 365 -in server.csr -signkey server.key -out server.crt
 /*
 Signature ok
-subject=/CN=localhost
+subject=/CN=localhost_ssl
 Getting Private key
 */
 [root@localhost mongossl]# ls
@@ -60,7 +71,7 @@ State or Province Name (full name) []:
 Locality Name (eg, city) [Default City]:
 Organization Name (eg, company) [Default Company Ltd]:
 Organizational Unit Name (eg, section) []:
-Common Name (eg, your name or your server's hostname) []:localhost
+Common Name (eg, your name or your server's hostname) []:localhost_ssl
 Email Address []:
 
 Please enter the following 'extra' attributes
@@ -75,7 +86,7 @@ cert.pem  mongodb.csr  mongodb.key  server.crt  server.csr  server.key
 [root@localhost mongossl]# openssl x509 -req -in mongodb.csr -CA cert.pem -CAkey server.key -CAcreateserial -out mongodb.crt -days 500 -sha256
 /*
 Signature ok
-subject=/C=XX/L=Default City/O=Default Company Ltd/CN=localhost
+subject=/C=XX/L=Default City/O=Default Company Ltd/CN=localhost_ssl
 Getting CA Private Key
 */
 [root@localhost mongossl]# ls
@@ -90,7 +101,7 @@ cert.srl  mongodb.csr  server.crt   server.key
 /*
 net:
   port: 27017
-  bindIp: localhost
+  bindIp: localhost_ssl
   ssl:
     mode: requireSSL
     PEMKeyFile: /etc/ssl/mongossl/mongodb.pem
@@ -102,23 +113,35 @@ net:
 [root@localhost mongossl]# systemctl start mongod
 [root@localhost mongossl]# systemctl status mongod
 --Disable_Authentication_on_MongoDB
-[root@localhost ~]# mongo --ssl --sslCAFile /etc/ssl/mongossl/cert.pem --sslPEMKeyFile /etc/ssl/mongossl/mongodb.pem --host localhost
+[root@localhost ~]# mongo --ssl --sslCAFile /etc/ssl/mongossl/cert.pem --sslPEMKeyFile /etc/ssl/mongossl/mongodb.pem --host localhost_ssl
 
 --Enable_Authentication_on_MongoDB with admin user
-[root@localhost ~]#mongo --ssl --sslCAFile /etc/ssl/mongossl/cert.pem --sslPEMKeyFile /etc/ssl/mongossl/mongodb.pem --host localhost --port 27017 -u admin -p Admin@P@55w0rd --authenticationDatabase admin
+[root@localhost ~]#mongo --ssl --sslCAFile /etc/ssl/mongossl/cert.pem --sslPEMKeyFile /etc/ssl/mongossl/mongodb.pem --host localhost_ssl --port 27017 -u admin -p Admin@P@55w0rd --authenticationDatabase admin
 --Enable_Authentication_on_MongoDB with chatbox user
-[root@localhost ~]#mongo --ssl --sslCAFile /etc/ssl/mongossl/cert.pem --sslPEMKeyFile /etc/ssl/mongossl/mongodb.pem --host localhost --port 27017 -u chatbox -p Ch@tB0x@P@55w0rd --authenticationDatabase chatbox
+[root@localhost ~]#mongo --ssl --sslCAFile /etc/ssl/mongossl/cert.pem --sslPEMKeyFile /etc/ssl/mongossl/mongodb.pem --host localhost_ssl --port 27017 -u chatbox -p Ch@tB0x@P@55w0rd --authenticationDatabase chatbox
 
 --Backup
 --FullBackup
-[root@localhost ~]#mongodump --ssl --sslCAFile /etc/ssl/mongossl/cert.pem --sslPEMKeyFile /etc/ssl/mongossl/mongodb.pem --host localhost --port 27017 -u admin -p Admin@P@55w0rd --authenticationDatabase admin --out /home/BackUpMongoDB/MongoFullBackup/dump/
+[root@localhost ~]#mongodump --ssl --sslCAFile /etc/ssl/mongossl/cert.pem --sslPEMKeyFile /etc/ssl/mongossl/mongodb.pem --host localhost_ssl --port 27017 -u admin -p Admin@P@55w0rd --authenticationDatabase admin --out /home/BackUpMongoDB/MongoFullBackup/dump/
 --ParticularBackup
-[root@localhost ~]#mongodump --ssl --sslCAFile /etc/ssl/mongossl/cert.pem --sslPEMKeyFile /etc/ssl/mongossl/mongodb.pem --host localhost --port 27017 -u admin -p Admin@P@55w0rd --authenticationDatabase admin -d chatbox --out /home/BackUpMongoDB/MongoFullBackup/dump/
+[root@localhost ~]#mongodump --ssl --sslCAFile /etc/ssl/mongossl/cert.pem --sslPEMKeyFile /etc/ssl/mongossl/mongodb.pem --host localhost_ssl --port 27017 -u admin -p Admin@P@55w0rd --authenticationDatabase admin -d chatbox --out /home/BackUpMongoDB/MongoFullBackup/dump/
 
 
 --Restore
 --FullBackupRestore
-[root@localhost ~]#mongorestore --ssl --sslCAFile /etc/ssl/mongossl/cert.pem --sslPEMKeyFile /etc/ssl/mongossl/mongodb.pem --host localhost:27017 -u admin -p Admin@P@55w0rd --authenticationDatabase admin /home/BackUpMongoDB/MongoFullBackup/dump/
+[root@localhost ~]#mongorestore --ssl --sslCAFile /etc/ssl/mongossl/cert.pem --sslPEMKeyFile /etc/ssl/mongossl/mongodb.pem --host localhost_ssl:27017 -u admin -p Admin@P@55w0rd --authenticationDatabase admin /home/BackUpMongoDB/MongoFullBackup/dump/
 --ParticularBackupRestore
-[root@localhost ~]#mongorestore --ssl --sslCAFile /etc/ssl/mongossl/cert.pem --sslPEMKeyFile /etc/ssl/mongossl/mongodb.pem --host localhost:27017 -u admin -p Admin@P@55w0rd --authenticationDatabase admin -d chatbox /home/BackUpMongoDB/MongoFullBackup/dump/chatbox
+[root@localhost ~]#mongorestore --ssl --sslCAFile /etc/ssl/mongossl/cert.pem --sslPEMKeyFile /etc/ssl/mongossl/mongodb.pem --host localhost_ssl:27017 -u admin -p Admin@P@55w0rd --authenticationDatabase admin -d chatbox /home/BackUpMongoDB/MongoFullBackup/dump/chatbox
 
+--To Connect Mongodb using Compass
+Hostname                : localhost_ssl
+Port                    : 27017
+Authentication          : Username / Password
+Username                : chatbox
+Password                : Ch@tB0x@P@55w0rd
+Authentication Database : chatbox
+Read Preference         : Primary
+SSL                     : Server and Client Validation
+Certificate Authority   : D:\mongossl\server.crt
+Client Certificate      : D:\mongossl\mongodb.crt
+Client Private Key      : D:\mongossl\mongodb.key
