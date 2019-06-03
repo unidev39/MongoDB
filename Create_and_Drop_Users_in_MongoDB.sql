@@ -139,3 +139,38 @@ mydb       0.000GB
 /*
 true
 */
+
+
+--------------------------------------
+--Enable_Authentication_on_MongoDB with admin user
+[root@localhost ~]#mongo --ssl --sslCAFile /etc/ssl/mongossl/cert.pem --sslPEMKeyFile /etc/ssl/mongossl/mongodb.pem --host localhost_ssl --port 27017 -u admin -p Admin@P@55w0rd --authenticationDatabase admin
+> use admin
+> db.createUser(
+         {
+           user:"User",
+           pwd:"User@P@55w0rd",
+           roles:[{role:"readWrite",db:"mydb"}]
+         }
+    )
+
+--Enable_Authentication_on_MongoDB with User of databasde mydb
+[root@localhost ~]#mongo --ssl --sslCAFile /etc/ssl/mongossl/cert.pem --sslPEMKeyFile /etc/ssl/mongossl/mongodb.pem --host localhost_ssl --port 27017 -u User -p User@P@55w0rd --authenticationDatabase admin
+
+
+--Enable_Authentication_on_MongoDB with admin user
+[root@localhost ~]#mongo --ssl --sslCAFile /etc/ssl/mongossl/cert.pem --sslPEMKeyFile /etc/ssl/mongossl/mongodb.pem --host localhost_ssl --port 27017 -u admin -p Admin@P@55w0rd --authenticationDatabase admin
+
+> use admin
+> db.createUser(
+         {
+           user:"User1",
+           pwd:"User1@P@55w0rd",
+           roles:[
+                  {role:"readWrite",db:"mydb"},
+                  {role:"readWrite",db:"chatbox"}
+                 ]
+         }
+    )
+--Enable_Authentication_on_MongoDB with User user1
+[root@localhost ~]#mongo --ssl --sslCAFile /etc/ssl/mongossl/cert.pem --sslPEMKeyFile /etc/ssl/mongossl/mongodb.pem --host localhost_ssl --port 27017 -u User1 -p User1@P@55w0rd --authenticationDatabase admin
+
