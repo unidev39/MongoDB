@@ -154,3 +154,11 @@ cursor = db.post_data.find();
 while ( cursor.hasNext() ) {
    printjson( cursor.next() );
 }
+
+
+---------------------------------------------
+-- Update the relevant collection
+> db.<relevant_collection_name>.updateOne({name:"<relevant_user_name"},{$set:{pwd:"<relevant_password>"}})
+> db.<relevant_collection_name>.updateOne({name:"<relevant_user_name"},{$set:{lockedAccountByMultiTry:false}})
+> db.<relevant_collection_name>.updateOne({name:"<relevant_user_name"},{$set:{passwordExpiryDate:"<releavnt_date>"}})
+> exit
