@@ -1,3 +1,16 @@
+--7.0.3
+db.createCollection('tbl_cib')
+
+db.tbl_cib.insertOne({name: "Devesh", age: 44})
+
+db.tbl_cib.insertMany([{name: "Devesh", age: 44}, {name: "Madhu", age: 44}])
+
+db.tbl_cib.bulkWrite([
+{ insertOne : { document : { name: "Devesh", age: 25 } } },
+{ updateOne : { filter : { name: "Madhu" }, update : { $set : { age: 40 } } } },
+{ deleteOne : { filter : { name: "Manish" } } }
+])
+
 -- To Create Collection In Specfic Database
 > show collections
 
