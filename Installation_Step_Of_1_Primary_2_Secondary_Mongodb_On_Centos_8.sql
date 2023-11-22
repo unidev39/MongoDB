@@ -3124,6 +3124,19 @@ admin   220.00 KiB
 config  252.00 KiB
 local   452.00 KiB
 
+rs0 [direct: primary] admin> rs.printSecondaryReplicationInfo()
+source: mongodb_1_s:27017
+{
+  syncedTo: 'Wed Nov 22 2023 13:39:32 GMT+0545 (Nepal Time)',
+  replLag: '0 secs (0 hrs) behind the primary '
+}
+---
+source: mongodb_2_s:27017
+{
+  syncedTo: 'Wed Nov 22 2023 13:39:32 GMT+0545 (Nepal Time)',
+  replLag: '0 secs (0 hrs) behind the primary '
+}
+
 rs0 [direct: primary] admin> quit()
 */
 
@@ -3142,6 +3155,19 @@ admin   188.00 KiB
 config  316.00 KiB
 local   452.00 KiB
 
+rs0 [direct: secondary] admin> rs.printSecondaryReplicationInfo()
+source: mongodb_1_s:27017
+{
+  syncedTo: 'Wed Nov 22 2023 13:40:02 GMT+0545 (Nepal Time)',
+  replLag: '0 secs (0 hrs) behind the primary '
+}
+---
+source: mongodb_2_s:27017
+{
+  syncedTo: 'Wed Nov 22 2023 13:40:02 GMT+0545 (Nepal Time)',
+  replLag: '0 secs (0 hrs) behind the primary '
+}
+
 rs0 [direct: secondary] test> quit()
 */
 
@@ -3159,6 +3185,19 @@ rs0 [direct: secondary] test> show dbs
 admin   188.00 KiB
 config  316.00 KiB
 local   452.00 KiB
+
+rs0 [direct: secondary] admin> rs.printSecondaryReplicationInfo()
+source: mongodb_1_s:27017
+{
+  syncedTo: 'Wed Nov 22 2023 13:40:02 GMT+0545 (Nepal Time)',
+  replLag: '0 secs (0 hrs) behind the primary '
+}
+---
+source: mongodb_2_s:27017
+{
+  syncedTo: 'Wed Nov 22 2023 13:40:02 GMT+0545 (Nepal Time)',
+  replLag: '0 secs (0 hrs) behind the primary '
+}
 
 rs0 [direct: secondary] test> quit()
 */
