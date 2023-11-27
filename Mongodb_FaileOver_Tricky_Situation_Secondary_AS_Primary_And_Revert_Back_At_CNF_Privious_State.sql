@@ -481,8 +481,8 @@ rs0 [direct: secondary] test> exit;
    CGroup: /system.slice/mongod.service
            └─5061 /usr/bin/mongod -f /etc/mongod.conf
 
-Nov 22 14:40:38 mongodb_2_s.cibnepal.org.np systemd[1]: Started MongoDB Database Server.
-Nov 22 14:40:38 mongodb_2_s.cibnepal.org.np mongod[5061]: {"t":{"$date":"2023-11-22T08:55:38.277Z"},"s":"I",  "c":"CONTROL",  "id":7484500, "ctx":"main","msg":"Environment variable MONGODB>
+Nov 22 14:40:38 mongodb_2_s.unidev39.org.np systemd[1]: Started MongoDB Database Server.
+Nov 22 14:40:38 mongodb_2_s.unidev39.org.np mongod[5061]: {"t":{"$date":"2023-11-22T08:55:38.277Z"},"s":"I",  "c":"CONTROL",  "id":7484500, "ctx":"main","msg":"Environment variable MONGODB>
 */
 
 -- Step 78 -->> On Node 3 (FailOver Test)
@@ -751,9 +751,9 @@ REDHAT_SUPPORT_PRODUCT_VERSION="CentOS Stream"
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 
 # Public
-192.168.56.149 mongodb_1_p.cibnepal.org.np mongodb_1_p
-192.168.56.150 mongodb_1_s.cibnepal.org.np mongodb_1_s
-192.168.56.151 mongodb_2_s.cibnepal.org.np mongodb_2_s
+192.168.56.149 mongodb_1_p.unidev39.org.np mongodb_1_p
+192.168.56.150 mongodb_1_s.unidev39.org.np mongodb_1_s
+192.168.56.151 mongodb_2_s.unidev39.org.np mongodb_2_s
 */
 
 -- Step 79.2 -->> On All Nodes (FailOver Test - Prepare Node1 & Node2)
@@ -778,7 +778,7 @@ SELINUXTYPE=targeted
 [root@mongodb_1_p ~]# vi /etc/sysconfig/network
 /*
 NETWORKING=yes
-HOSTNAME=mongodb_1_p.cibnepal.org.np
+HOSTNAME=mongodb_1_p.unidev39.org.np
 */
 
 -- Step 79.3.1 -->> On Node 2 (FailOver Test - Prepare Node1 & Node2)
@@ -786,7 +786,7 @@ HOSTNAME=mongodb_1_p.cibnepal.org.np
 /*
 # Created by anaconda
 NETWORKING=yes
-HOSTNAME=mongodb_1_s.cibnepal.org.np
+HOSTNAME=mongodb_1_s.unidev39.org.np
 */
 
 -- Step 79.4 -->> On Node 1 (FailOver Test - Prepare Node1 & Node2)
@@ -831,30 +831,30 @@ DNS2=8.8.8.8
 [root@mongodb_1_p/mongodb_1_s ~]# systemctl restart network-online.target
 
 -- Step 79.6.0 -->> On Node 1 (FailOver Test - Prepare Node1 & Node2)
-[root@mongodb_1_p ~]# hostnamectl set-hostname mongodb_1_p.cibnepal.org.np
+[root@mongodb_1_p ~]# hostnamectl set-hostname mongodb_1_p.unidev39.org.np
 
 -- Step 79.6.1 -->> On Node 1 (FailOver Test - Prepare Node1 & Node2)
 [root@mongodb_1_p ~]# cat /etc/hostname
 /*
-mongodb_1_p.cibnepal.org.np
+mongodb_1_p.unidev39.org.np
 */
 
 -- Step 79.6.2 -->> On Node 1 (FailOver Test - Prepare Node1 & Node2)
 [root@mongodb_1_p ~]# hostnamectl | grep hostname
 /*
-  Static hostname: mongodb_1_p.cibnepal.org.np
+  Static hostname: mongodb_1_p.unidev39.org.np
 */
 
 -- Step 79.6.3 -->> On Node 1 (FailOver Test - Prepare Node1 & Node2)
 [root@mongodb_1_p ~]# hostnamectl --static
 /*
-mongodb_1_p.cibnepal.org.np
+mongodb_1_p.unidev39.org.np
 */
 
 -- Step 79.6.4 -->> On Node 1 (FailOver Test - Prepare Node1 & Node2)
 [root@mongodb_1_p ~]# hostnamectl
 /*
-   Static hostname: mongodb_1_p.cibnepal.org.np
+   Static hostname: mongodb_1_p.unidev39.org.np
          Icon name: computer-vm
            Chassis: vm
         Machine ID: cbaf309dd0cb4d9dbfdb4688b4515eb6
@@ -867,30 +867,30 @@ mongodb_1_p.cibnepal.org.np
 */
 
 -- Step 79.6.0.1 -->> On Node 2 (FailOver Test - Prepare Node1 & Node2)
-[root@mongodb_1_s ~]# hostnamectl set-hostname mongodb_1_s.cibnepal.org.np
+[root@mongodb_1_s ~]# hostnamectl set-hostname mongodb_1_s.unidev39.org.np
 
 -- Step 79.6.1.1 -->> On Node 2 (FailOver Test - Prepare Node1 & Node2)
 [root@mongodb_1_s ~]# cat /etc/hostname
 /*
-mongodb_1_s.cibnepal.org.np
+mongodb_1_s.unidev39.org.np
 */
 
 -- Step 79.6.2.1 -->> On Node 2 (FailOver Test - Prepare Node1 & Node2)
 [root@mongodb_1_s ~]# hostnamectl | grep hostname
 /*
-  Static hostname: mongodb_1_s.cibnepal.org.np
+  Static hostname: mongodb_1_s.unidev39.org.np
 */
 
 -- Step 79.6.3.1 -->> On Node 2 (FailOver Test - Prepare Node1 & Node2)
 [root@mongodb_1_s ~]# hostnamectl --static
 /*
-mongodb_1_s.cibnepal.org.np
+mongodb_1_s.unidev39.org.np
 */
 
 -- Step 79.6.4.1 -->> On Node 2 (FailOver Test - Prepare Node1 & Node2)
 [root@mongodb_1_s ~]# hostnamectl
 /*
-   Static hostname: mongodb_1_s.cibnepal.org.np
+   Static hostname: mongodb_1_s.unidev39.org.np
          Icon name: computer-vm
            Chassis: vm
         Machine ID: cbaf309dd0cb4d9dbfdb4688b4515eb6
@@ -1305,8 +1305,8 @@ mongod:x:969:
    CGroup: /system.slice/mongod.service
            └─6739 /usr/bin/mongod -f /etc/mongod.conf
 
-Nov 22 15:18:26 mongodb_1_p.cibnepal.org.np systemd[1]: Started MongoDB Database Server.
-Nov 22 15:18:26 mongodb_1_p.cibnepal.org.np mongod[6739]: {"t":{"$date":"2023-11-22T09:33:26>
+Nov 22 15:18:26 mongodb_1_p.unidev39.org.np systemd[1]: Started MongoDB Database Server.
+Nov 22 15:18:26 mongodb_1_p.unidev39.org.np mongod[6739]: {"t":{"$date":"2023-11-22T09:33:26>
 */
 
 -- Step 79.26 -->> On All Nodes (FailOver Test - Prepare Node1 & Node2)
@@ -1395,8 +1395,8 @@ test> quit()
    CGroup: /system.slice/mongod.service
            └─6878 /usr/bin/mongod -f /etc/mongod.conf
 
-Nov 22 15:21:27 mongodb_1_p.cibnepal.org.np systemd[1]: Started MongoDB Database Server.
-Nov 22 15:21:27 mongodb_1_p.cibnepal.org.np mongod[6878]: {"t":{"$date":"2023-11-22T09:36:27>
+Nov 22 15:21:27 mongodb_1_p.unidev39.org.np systemd[1]: Started MongoDB Database Server.
+Nov 22 15:21:27 mongodb_1_p.unidev39.org.np mongod[6878]: {"t":{"$date":"2023-11-22T09:36:27>
 */
 
 -- Step 79.29 -->> On All Nodes (FailOver Test - Prepare Node1 & Node2)
@@ -1490,8 +1490,8 @@ Created symlink /etc/systemd/system/multi-user.target.wants/disable-mogodb-warni
    CGroup: /system.slice/mongod.service
            └─7087 /usr/bin/mongod -f /etc/mongod.conf
 
-Nov 22 15:23:56 mongodb_1_p.cibnepal.org.np systemd[1]: Started MongoDB Database Server.
-Nov 22 15:23:56 mongodb_1_p.cibnepal.org.np mongod[7087]: {"t":{"$date":"2023-11-22T09:38:56>
+Nov 22 15:23:56 mongodb_1_p.unidev39.org.np systemd[1]: Started MongoDB Database Server.
+Nov 22 15:23:56 mongodb_1_p.unidev39.org.np mongod[7087]: {"t":{"$date":"2023-11-22T09:38:56>
 */
 
 -- Step 79.32 -->> On All Nodes (FailOver Test - Prepare Node1 & Node2)
@@ -1572,8 +1572,8 @@ security:
    CGroup: /system.slice/mongod.service
            └─7972 /usr/bin/mongod -f /etc/mongod.conf
 
-Nov 22 15:31:35 mongodb_1_p.cibnepal.org.np systemd[1]: Started MongoDB Database Server.
-Nov 22 15:31:35 mongodb_1_p.cibnepal.org.np mongod[7972]: {"t":{"$date":"2023-11-22T09:46:35>
+Nov 22 15:31:35 mongodb_1_p.unidev39.org.np systemd[1]: Started MongoDB Database Server.
+Nov 22 15:31:35 mongodb_1_p.unidev39.org.np mongod[7972]: {"t":{"$date":"2023-11-22T09:46:35>
 */
 
 -- Step 79.38 -->> On Node 2 (FailOver Test - Prepare Node1 & Node2)
@@ -1602,8 +1602,8 @@ security:
    CGroup: /system.slice/mongod.service
            └─53559 /usr/bin/mongod -f /etc/mongod.conf
 
-Nov 22 15:31:37 mongodb_1_s.cibnepal.org.np systemd[1]: Started MongoDB Database Server.
-Nov 22 15:31:37 mongodb_1_s.cibnepal.org.np mongod[53559]: {"t":{"$date":"2023-11-22T09:46:3>
+Nov 22 15:31:37 mongodb_1_s.unidev39.org.np systemd[1]: Started MongoDB Database Server.
+Nov 22 15:31:37 mongodb_1_s.unidev39.org.np mongod[53559]: {"t":{"$date":"2023-11-22T09:46:3>
 */
 
 -- Step 79.42 -->> On All Nodes (Replication Configuration) (FailOver Test - Prepare Node1 & Node2)
@@ -1704,10 +1704,10 @@ security:
    CGroup: /system.slice/mongod.service
            └─8172 /usr/bin/mongod -f /etc/mongod.conf
 
-Nov 22 15:36:06 mongodb_1_p.cibnepal.org.np systemd[1]: mongod.service: Succeeded.
-Nov 22 15:36:06 mongodb_1_p.cibnepal.org.np systemd[1]: Stopped MongoDB Database Server.
-Nov 22 15:36:06 mongodb_1_p.cibnepal.org.np systemd[1]: Started MongoDB Database Server.
-Nov 22 15:36:06 mongodb_1_p.cibnepal.org.np mongod[8172]: {"t":{"$date":"2023-11-22T09:51:06>
+Nov 22 15:36:06 mongodb_1_p.unidev39.org.np systemd[1]: mongod.service: Succeeded.
+Nov 22 15:36:06 mongodb_1_p.unidev39.org.np systemd[1]: Stopped MongoDB Database Server.
+Nov 22 15:36:06 mongodb_1_p.unidev39.org.np systemd[1]: Started MongoDB Database Server.
+Nov 22 15:36:06 mongodb_1_p.unidev39.org.np mongod[8172]: {"t":{"$date":"2023-11-22T09:51:06>
 */
 
 -- Step 80 -->> On Node 3 (FailOver Test)
@@ -2112,8 +2112,8 @@ rs0 [direct: secondary] admin> exit
    CGroup: /system.slice/mongod.service
            └─8575 /usr/bin/mongod -f /etc/mongod.conf
 
-Nov 22 15:45:26 mongodb_1_p.cibnepal.org.np systemd[1]: Started MongoDB Database Server.
-Nov 22 15:45:26 mongodb_1_p.cibnepal.org.np mongod[8575]: {"t":{"$date":"2023-11-22T10:00:26>
+Nov 22 15:45:26 mongodb_1_p.unidev39.org.np systemd[1]: Started MongoDB Database Server.
+Nov 22 15:45:26 mongodb_1_p.unidev39.org.np mongod[8575]: {"t":{"$date":"2023-11-22T10:00:26>
 */
 
 -- Step 82 -->> On Node 2 (FailOver Test)
@@ -2130,10 +2130,10 @@ Nov 22 15:45:26 mongodb_1_p.cibnepal.org.np mongod[8575]: {"t":{"$date":"2023-11
    CGroup: /system.slice/mongod.service
            └─54101 /usr/bin/mongod -f /etc/mongod.conf
 
-Nov 22 15:45:47 mongodb_1_s.cibnepal.org.np systemd[1]: mongod.service: Succeeded.
-Nov 22 15:45:47 mongodb_1_s.cibnepal.org.np systemd[1]: Stopped MongoDB Database Server.
-Nov 22 15:45:47 mongodb_1_s.cibnepal.org.np systemd[1]: Started MongoDB Database Server.
-Nov 22 15:45:47 mongodb_1_s.cibnepal.org.np mongod[54101]: {"t":{"$date":"2023-11-22T10:00:47>
+Nov 22 15:45:47 mongodb_1_s.unidev39.org.np systemd[1]: mongod.service: Succeeded.
+Nov 22 15:45:47 mongodb_1_s.unidev39.org.np systemd[1]: Stopped MongoDB Database Server.
+Nov 22 15:45:47 mongodb_1_s.unidev39.org.np systemd[1]: Started MongoDB Database Server.
+Nov 22 15:45:47 mongodb_1_s.unidev39.org.np mongod[54101]: {"t":{"$date":"2023-11-22T10:00:47>
 */
 
 -- Step 84 -->> On Node 3 (FailOver Test)
@@ -2150,10 +2150,10 @@ Nov 22 15:45:47 mongodb_1_s.cibnepal.org.np mongod[54101]: {"t":{"$date":"2023-1
    CGroup: /system.slice/mongod.service
            └─8053 /usr/bin/mongod -f /etc/mongod.conf
 
-Nov 22 15:46:46 mongodb_2_s.cibnepal.org.np systemd[1]: mongod.service: Succeeded.
-Nov 22 15:46:46 mongodb_2_s.cibnepal.org.np systemd[1]: Stopped MongoDB Database Server.
-Nov 22 15:46:46 mongodb_2_s.cibnepal.org.np systemd[1]: Started MongoDB Database Server.
-Nov 22 15:46:46 mongodb_2_s.cibnepal.org.np mongod[8053]: {"t":{"$date":"2023-11-22T10:01:46>
+Nov 22 15:46:46 mongodb_2_s.unidev39.org.np systemd[1]: mongod.service: Succeeded.
+Nov 22 15:46:46 mongodb_2_s.unidev39.org.np systemd[1]: Stopped MongoDB Database Server.
+Nov 22 15:46:46 mongodb_2_s.unidev39.org.np systemd[1]: Started MongoDB Database Server.
+Nov 22 15:46:46 mongodb_2_s.unidev39.org.np mongod[8053]: {"t":{"$date":"2023-11-22T10:01:46>
 */
 
 -- Step 86 -->> On Node 1 (FailOver Test)
