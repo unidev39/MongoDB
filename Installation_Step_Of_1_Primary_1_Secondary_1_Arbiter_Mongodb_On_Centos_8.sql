@@ -54,9 +54,9 @@ REDHAT_SUPPORT_PRODUCT_VERSION="CentOS Stream"
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 
 # Public
-192.168.56.149 mongodb_1_p.cibnepal.org.np mongodb_1_p
-192.168.56.150 mongodb_1_s.cibnepal.org.np mongodb_1_s
-192.168.56.151 mongodb_1_a.cibnepal.org.np mongodb_1_a
+192.168.56.149 mongodb_1_p.unidev39.org.np mongodb_1_p
+192.168.56.150 mongodb_1_s.unidev39.org.np mongodb_1_s
+192.168.56.151 mongodb_1_a.unidev39.org.np mongodb_1_a
 */
 
 -- Step 2 -->> On All Nodes
@@ -81,7 +81,7 @@ SELINUXTYPE=targeted
 [root@mongodb_1_p ~]# vi /etc/sysconfig/network
 /*
 NETWORKING=yes
-HOSTNAME=mongodb_1_p.cibnepal.org.np
+HOSTNAME=mongodb_1_p.unidev39.org.np
 */
 
 -- Step 3.1 -->> On Node 2
@@ -89,7 +89,7 @@ HOSTNAME=mongodb_1_p.cibnepal.org.np
 /*
 # Created by anaconda
 NETWORKING=yes
-HOSTNAME=mongodb_1_s.cibnepal.org.np
+HOSTNAME=mongodb_1_s.unidev39.org.np
 */
 
 -- Step 3.2 -->> On Node 3
@@ -97,7 +97,7 @@ HOSTNAME=mongodb_1_s.cibnepal.org.np
 /*
 # Created by anaconda
 NETWORKING=yes
-HOSTNAME=mongodb_1_a.cibnepal.org.np
+HOSTNAME=mongodb_1_a.unidev39.org.np
 */
 
 -- Step 4 -->> On Node 1
@@ -161,30 +161,30 @@ DNS2=8.8.8.8
 [root@mongodb_1_p/mongodb_1_s/mongodb_1_a ~]# systemctl restart network-online.target
 
 -- Step 6.0 -->> On Node 1
-[root@mongodb_1_p ~]# hostnamectl set-hostname mongodb_1_p.cibnepal.org.np
+[root@mongodb_1_p ~]# hostnamectl set-hostname mongodb_1_p.unidev39.org.np
 
 -- Step 6.1 -->> On Node 1
 [root@mongodb_1_p ~]# cat /etc/hostname
 /*
-mongodb_1_p.cibnepal.org.np
+mongodb_1_p.unidev39.org.np
 */
 
 -- Step 6.2 -->> On Node 1
 [root@mongodb_1_p ~]# hostnamectl | grep hostname
 /*
-  Static hostname: mongodb_1_p.cibnepal.org.np
+  Static hostname: mongodb_1_p.unidev39.org.np
 */
 
 -- Step 6.3 -->> On Node 1
 [root@mongodb_1_p ~]# hostnamectl --static
 /*
-mongodb_1_p.cibnepal.org.np
+mongodb_1_p.unidev39.org.np
 */
 
 -- Step 6.4 -->> On Node 1
 [root@mongodb_1_p ~]# hostnamectl
 /*
-   Static hostname: mongodb_1_p.cibnepal.org.np
+   Static hostname: mongodb_1_p.unidev39.org.np
          Icon name: computer-vm
            Chassis: vm
         Machine ID: cbaf309dd0cb4d9dbfdb4688b4515eb6
@@ -197,30 +197,30 @@ mongodb_1_p.cibnepal.org.np
 */
 
 -- Step 6.0.1 -->> On Node 2
-[root@mongodb_1_s ~]# hostnamectl set-hostname mongodb_1_s.cibnepal.org.np
+[root@mongodb_1_s ~]# hostnamectl set-hostname mongodb_1_s.unidev39.org.np
 
 -- Step 6.1.1 -->> On Node 2
 [root@mongodb_1_s ~]# cat /etc/hostname
 /*
-mongodb_1_s.cibnepal.org.np
+mongodb_1_s.unidev39.org.np
 */
 
 -- Step 6.2.1 -->> On Node 2
 [root@mongodb_1_s ~]# hostnamectl | grep hostname
 /*
-  Static hostname: mongodb_1_s.cibnepal.org.np
+  Static hostname: mongodb_1_s.unidev39.org.np
 */
 
 -- Step 6.3.1 -->> On Node 2
 [root@mongodb_1_s ~]# hostnamectl --static
 /*
-mongodb_1_s.cibnepal.org.np
+mongodb_1_s.unidev39.org.np
 */
 
 -- Step 6.4.1 -->> On Node 2
 [root@mongodb_1_s ~]# hostnamectl
 /*
-   Static hostname: mongodb_1_s.cibnepal.org.np
+   Static hostname: mongodb_1_s.unidev39.org.np
          Icon name: computer-vm
            Chassis: vm
         Machine ID: cbaf309dd0cb4d9dbfdb4688b4515eb6
@@ -233,30 +233,30 @@ mongodb_1_s.cibnepal.org.np
 */
 
 -- Step 6.0.2 -->> On Node 3
-[root@mongodb_1_a ~]# hostnamectl set-hostname mongodb_1_a.cibnepal.org.np
+[root@mongodb_1_a ~]# hostnamectl set-hostname mongodb_1_a.unidev39.org.np
 
 -- Step 6.1.2 -->> On Node 3
 [root@mongodb_1_a ~]# cat /etc/hostname
 /*
-mongodb_1_a.cibnepal.org.np
+mongodb_1_a.unidev39.org.np
 */
 
 -- Step 6.2.2 -->> On Node 3
 [root@mongodb_1_a ~]# hostnamectl | grep hostname
 /*
-  Static hostname: mongodb_1_a.cibnepal.org.np
+  Static hostname: mongodb_1_a.unidev39.org.np
 */
 
 -- Step 6.3.2 -->> On Node 3
 [root@mongodb_1_a ~]# hostnamectl --static
 /*
-mongodb_1_a.cibnepal.org.np
+mongodb_1_a.unidev39.org.np
 */
 
 -- Step 6.4.2 -->> On Node 3
 [root@mongodb_1_a ~]# hostnamectl
 /*
-   Static hostname: mongodb_1_a.cibnepal.org.np
+   Static hostname: mongodb_1_a.unidev39.org.np
          Icon name: computer-vm
            Chassis: vm
         Machine ID: cbaf309dd0cb4d9dbfdb4688b4515eb6
@@ -702,8 +702,8 @@ mongod:x:969:
    CGroup: /system.slice/mongod.service
            └─8386 /usr/bin/mongod -f /etc/mongod.conf
 
-Nov 17 11:40:33 mongodb_1_p.cibnepal.org.np systemd[1]: Started MongoDB Database Server.
-Nov 17 11:40:33 mongodb_1_p.cibnepal.org.np mongod[8386]: {"t":{"$date":"2023-11-17T05:55:3>
+Nov 17 11:40:33 mongodb_1_p.unidev39.org.np systemd[1]: Started MongoDB Database Server.
+Nov 17 11:40:33 mongodb_1_p.unidev39.org.np mongod[8386]: {"t":{"$date":"2023-11-17T05:55:3>
 */
 
 -- Step 26 -->> On All Nodes
@@ -792,8 +792,8 @@ test> quit()
    CGroup: /system.slice/mongod.service
            └─8212 /usr/bin/mongod -f /etc/mongod.conf
 
-Nov 17 11:40:35 mongodb_1_a.cibnepal.org.np systemd[1]: Started MongoDB Database Server.
-Nov 17 11:40:35 mongodb_1_a.cibnepal.org.np mongod[8212]: {"t":{"$date":"2023-11-17T05:55:35>
+Nov 17 11:40:35 mongodb_1_a.unidev39.org.np systemd[1]: Started MongoDB Database Server.
+Nov 17 11:40:35 mongodb_1_a.unidev39.org.np mongod[8212]: {"t":{"$date":"2023-11-17T05:55:35>
 */
 
 -- Step 29 -->> On All Nodes
@@ -886,10 +886,10 @@ Created symlink /etc/systemd/system/multi-user.target.wants/disable-mogodb-warni
    CGroup: /system.slice/mongod.service
            └─8743 /usr/bin/mongod -f /etc/mongod.conf
 
-Nov 17 11:46:51 mongodb_1_p.cibnepal.org.np systemd[1]: mongod.service: Succeeded.
-Nov 17 11:46:51 mongodb_1_p.cibnepal.org.np systemd[1]: Stopped MongoDB Database Server.
-Nov 17 11:46:51 mongodb_1_p.cibnepal.org.np systemd[1]: Started MongoDB Database Server.
-Nov 17 11:46:51 mongodb_1_p.cibnepal.org.np mongod[8743]: {"t":{"$date":"2023-11-17T06:01:5>
+Nov 17 11:46:51 mongodb_1_p.unidev39.org.np systemd[1]: mongod.service: Succeeded.
+Nov 17 11:46:51 mongodb_1_p.unidev39.org.np systemd[1]: Stopped MongoDB Database Server.
+Nov 17 11:46:51 mongodb_1_p.unidev39.org.np systemd[1]: Started MongoDB Database Server.
+Nov 17 11:46:51 mongodb_1_p.unidev39.org.np mongod[8743]: {"t":{"$date":"2023-11-17T06:01:5>
 */
 
 -- Step 32 -->> On All Nodes
@@ -1040,8 +1040,8 @@ security:
    CGroup: /system.slice/mongod.service
            └─5516 /usr/bin/mongod -f /etc/mongod.conf
 
-Nov 17 15:17:56 mongodb_1_p.cibnepal.org.np systemd[1]: Started MongoDB Database Server.
-Nov 17 15:17:56 mongodb_1_p.cibnepal.org.np mongod[5516]: {"t":{"$date":"2023-11-17T09:32:56>
+Nov 17 15:17:56 mongodb_1_p.unidev39.org.np systemd[1]: Started MongoDB Database Server.
+Nov 17 15:17:56 mongodb_1_p.unidev39.org.np mongod[5516]: {"t":{"$date":"2023-11-17T09:32:56>
 */
 
 -- Step 39 -->> On Node 1
@@ -1150,8 +1150,8 @@ security:
    CGroup: /system.slice/mongod.service
            └─5529 /usr/bin/mongod -f /etc/mongod.conf
 
-Nov 17 12:39:01 mongodb_1_s.cibnepal.org.np systemd[1]: Started MongoDB Database Server.
-Nov 17 12:39:01 mongodb_1_s.cibnepal.org.np mongod[5529]: {"t":{"$date":"2023-11-17T06:54:01.162Z">
+Nov 17 12:39:01 mongodb_1_s.unidev39.org.np systemd[1]: Started MongoDB Database Server.
+Nov 17 12:39:01 mongodb_1_s.unidev39.org.np mongod[5529]: {"t":{"$date":"2023-11-17T06:54:01.162Z">
 */
 
 -- Step 46 -->> On Node 3
@@ -1180,8 +1180,8 @@ security:
    CGroup: /system.slice/mongod.service
            └─5590 /usr/bin/mongod -f /etc/mongod.conf
 
-Nov 17 12:41:44 mongodb_1_a.cibnepal.org.np systemd[1]: Started MongoDB Database Server.
-Nov 17 12:41:44 mongodb_1_a.cibnepal.org.np mongod[5590]: {"t":{"$date":"2023-11-17T06:56:44.803Z">
+Nov 17 12:41:44 mongodb_1_a.unidev39.org.np systemd[1]: Started MongoDB Database Server.
+Nov 17 12:41:44 mongodb_1_a.unidev39.org.np mongod[5590]: {"t":{"$date":"2023-11-17T06:56:44.803Z">
 */
 
 -- Step 50 -->> On All Nodes (Replication Configuration)
@@ -1341,10 +1341,10 @@ security:
    CGroup: /system.slice/mongod.service
            └─7454 /usr/bin/mongod -f /etc/mongod.conf
 
-Nov 17 13:07:58 mongodb_1_p.cibnepal.org.np systemd[1]: mongod.service: Succeeded.
-Nov 17 13:07:58 mongodb_1_p.cibnepal.org.np systemd[1]: Stopped MongoDB Database Server.
-Nov 17 13:07:58 mongodb_1_p.cibnepal.org.np systemd[1]: Started MongoDB Database Server.
-Nov 17 13:07:59 mongodb_1_p.cibnepal.org.np mongod[7454]: {"t":{"$date":"2023-11-17T07:22:5>
+Nov 17 13:07:58 mongodb_1_p.unidev39.org.np systemd[1]: mongod.service: Succeeded.
+Nov 17 13:07:58 mongodb_1_p.unidev39.org.np systemd[1]: Stopped MongoDB Database Server.
+Nov 17 13:07:58 mongodb_1_p.unidev39.org.np systemd[1]: Started MongoDB Database Server.
+Nov 17 13:07:59 mongodb_1_p.unidev39.org.np mongod[7454]: {"t":{"$date":"2023-11-17T07:22:5>
 */
 
 -- Step 52 -->> On Node 1
