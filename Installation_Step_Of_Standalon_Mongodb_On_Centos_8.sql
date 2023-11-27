@@ -45,7 +45,7 @@ REDHAT_SUPPORT_PRODUCT_VERSION="CentOS Stream"
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 
 # Public
-192.168.56.148 mongodb.deveshnepal.org.np mongodb
+192.168.56.148 mongodb.unidev39.org.np mongodb
 */
 
 -- Step 2 -->> On Node 1
@@ -70,7 +70,7 @@ SELINUXTYPE=targeted
 [root@mongodb ~]# vi /etc/sysconfig/network
 /*
 NETWORKING=yes
-HOSTNAME=mongodb.deveshnepal.org.np
+HOSTNAME=mongodb.unidev39.org.np
 */
 
 -- Step 4 -->> On Node 1
@@ -97,25 +97,25 @@ DNS2=8.8.8.8
 -- Step 6 -->> On Node 1
 [root@mongodb ~]# cat /etc/hostname
 /*
-mongodb.deveshnepal.org.np
+mongodb.unidev39.org.np
 */
 
 -- Step 6.1 -->> On Node 1
 [root@mongodb ~]# hostnamectl | grep hostname
 /*
- Static hostname: mongodb.deveshnepal.org.np
+ Static hostname: mongodb.unidev39.org.np
 */
 
 -- Step 6.2 -->> On Node 1
 [root@mongodb ~]# hostnamectl --static
 /*
-mongodb.deveshnepal.org.np
+mongodb.unidev39.org.np
 */
 
 -- Step 6.3 -->> On Node 1
 [root@mongodb ~]# hostnamectl
 /*
-   Static hostname: mongodb.deveshnepal.org.np
+   Static hostname: mongodb.unidev39.org.np
          Icon name: computer-vm
            Chassis: vm
         Machine ID: cbaf309dd0cb4d9dbfdb4688b4515eb6
@@ -501,10 +501,10 @@ mongod:x:969:
    CGroup: /system.slice/mongod.service
            └─6575 /usr/bin/mongod -f /etc/mongod.conf
 
-Nov 07 17:04:06 mongodb.deveshnepal.org.np systemd[1]: mongod.service: Succeeded.
-Nov 07 17:04:06 mongodb.deveshnepal.org.np systemd[1]: Stopped MongoDB Database Server.
-Nov 07 17:04:06 mongodb.deveshnepal.org.np systemd[1]: Started MongoDB Database Server.
-Nov 07 17:04:06 mongodb.deveshnepal.org.np mongod[6575]: {"t":{"$date":"2023-11-07T11:19:06.088Z"},"s":"I",  "c":"CONTROL",  "id":7484500, "ctx":"main","msg":"Environment variable MONGODB_CON>
+Nov 07 17:04:06 mongodb.unidev39.org.np systemd[1]: mongod.service: Succeeded.
+Nov 07 17:04:06 mongodb.unidev39.org.np systemd[1]: Stopped MongoDB Database Server.
+Nov 07 17:04:06 mongodb.unidev39.org.np systemd[1]: Started MongoDB Database Server.
+Nov 07 17:04:06 mongodb.unidev39.org.np mongod[6575]: {"t":{"$date":"2023-11-07T11:19:06.088Z"},"s":"I",  "c":"CONTROL",  "id":7484500, "ctx":"main","msg":"Environment variable MONGODB_CON>
 */
 
 -- Step 26 -->> On Node 1
@@ -591,8 +591,8 @@ test> quit()
    CGroup: /system.slice/mongod.service
            └─7290 /usr/bin/mongod -f /etc/mongod.conf
 
-Nov 07 17:17:52 mongodb.deveshnepal.org.np systemd[1]: Started MongoDB Database Server.
-Nov 07 17:17:52 mongodb.deveshnepal.org.np mongod[7290]: {"t":{"$date":"2023-11-07T11:32:52.094Z"},"s":"I",  "c":"CONTROL",  "id":7484500, "ctx":"main","msg":"Environment variable MONGODB_CON>
+Nov 07 17:17:52 mongodb.unidev39.org.np systemd[1]: Started MongoDB Database Server.
+Nov 07 17:17:52 mongodb.unidev39.org.np mongod[7290]: {"t":{"$date":"2023-11-07T11:32:52.094Z"},"s":"I",  "c":"CONTROL",  "id":7484500, "ctx":"main","msg":"Environment variable MONGODB_CON>
 */
 
 -- Step 29 -->> On Node 1
@@ -681,10 +681,10 @@ Created symlink /etc/systemd/system/multi-user.target.wants/disable-mogodb-warni
    CGroup: /system.slice/mongod.service
            └─5135 /usr/bin/mongod -f /etc/mongod.conf
 
-Nov 14 16:28:15 mongodb.deveshnepal.org.np systemd[1]: mongod.service: Succeeded.
-Nov 14 16:28:15 mongodb.deveshnepal.org.np systemd[1]: Stopped MongoDB Database Server.
-Nov 14 16:28:15 mongodb.deveshnepal.org.np systemd[1]: Started MongoDB Database Server.
-Nov 14 16:28:15 mongodb.deveshnepal.org.np mongod[5135]: {"t":{"$date":"2023-11-14T10:43:15.781Z"},"s":"I",  "c":"CONTROL",  "id":7484500, "ctx":"main","msg":"Environment variable MONGODB_CON>
+Nov 14 16:28:15 mongodb.unidev39.org.np systemd[1]: mongod.service: Succeeded.
+Nov 14 16:28:15 mongodb.unidev39.org.np systemd[1]: Stopped MongoDB Database Server.
+Nov 14 16:28:15 mongodb.unidev39.org.np systemd[1]: Started MongoDB Database Server.
+Nov 14 16:28:15 mongodb.unidev39.org.np mongod[5135]: {"t":{"$date":"2023-11-14T10:43:15.781Z"},"s":"I",  "c":"CONTROL",  "id":7484500, "ctx":"main","msg":"Environment variable MONGODB_CON>
 */
 
 -- Step 32 -->> On Node 1
@@ -815,8 +815,8 @@ security.authorization: enabled
    CGroup: /system.slice/mongod.service
            └─7458 /usr/bin/mongod -f /etc/mongod.conf
 
-Nov 08 15:27:35 mongodb.deveshnepal.org.np systemd[1]: Started MongoDB Database Server.
-Nov 08 15:27:35 mongodb.deveshnepal.org.np mongod[7458]: {"t":{"$date":"2023-11-08T09:42:35.745Z"},"s":"I",  "c":"CONTROL",  "id":7484500, "ctx":"main","msg":"Environment variable MONGODB_CON>
+Nov 08 15:27:35 mongodb.unidev39.org.np systemd[1]: Started MongoDB Database Server.
+Nov 08 15:27:35 mongodb.unidev39.org.np mongod[7458]: {"t":{"$date":"2023-11-08T09:42:35.745Z"},"s":"I",  "c":"CONTROL",  "id":7484500, "ctx":"main","msg":"Environment variable MONGODB_CON>
 */
 
 -- Step 37 -->> On Node 1
